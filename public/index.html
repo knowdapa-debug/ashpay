@@ -1769,12 +1769,8 @@ const {data:{session}}=await supabaseClient.auth.getSession();
 if(!session){alert("Silakan login terlebih dahulu.");return;}
 try{
 const {error}=await supabaseClient.rpc("ashpay_demo_transfer",{p_recipient_ashpay_id:receiver,p_amount:amount,p_description:"Transfer AshPay"});
-if(error){console.error(error);alert("Transfer gagal:
-"+error.message);return;}
-alert("Transfer berhasil!
-
-Penerima: "+receiver+"
-Nominal: Rp"+amount.toLocaleString("id-ID"));
+if(error){console.error(error);alert("Transfer gagal:\n"+error.message);return;}
+alert("Transfer berhasil!\n\nPenerima: "+receiver+"\nNominal: Rp"+amount.toLocaleString("id-ID"));
 closeModal();
 if(typeof loadDashboard==="function")await loadDashboard();
 if(typeof loadTransactions==="function")await loadTransactions();
